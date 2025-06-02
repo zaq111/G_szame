@@ -10,7 +10,8 @@ import subprocess
 import time
 capture_counter = 1  # Nomor urut untuk gambar yang disimpan
 click_counter = 1 
-ADB_PATH = r"C:\Users\sin19\Downloads\platform-tools-latest-windows\platform-tools\adb.exe"
+#ADB_PATH = r"C:\Users\sin19\Downloads\platform-tools-latest-windows\platform-tools\adb.exe"
+ADB_PATH = r"C:\ADB\platform-tools\adb.exe"
 DEVICE_ID = "emulator-5554"  # Pastikan ID ini benar
 
 PHASES = [
