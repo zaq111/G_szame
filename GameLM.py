@@ -10,7 +10,8 @@ DEVICE_ID = "emulator-5554"
 PACKAGE_NAME = "com.ncvgames.lineage2msa"
 PREF_FILE = f"/data/data/{PACKAGE_NAME}/shared_prefs/ncmop.preferences.xml"
 image_dir = r"C:\Users\Administrator\source\repos\zaq111\Game"
-
+nama1 = r"C:\Users\Administrator\source\repos\zaq111\Game\nama1.txt"
+nama2 = r"C:\Users\Administrator\source\repos\zaq111\Game\nama2.txt"
 
 def adb_command(command, use_su=False):
     if use_su:
@@ -37,7 +38,7 @@ def preferences_file_exists():
     return bool(result)
 
 def rename_preferences_file():
-    random_number = random.randint(1000, 9999)
+    random_number = random.randint(100000, 999999)
     new_name = f"/data/data/{PACKAGE_NAME}/shared_prefs/ncmop.preferences_{random_number}.xml"
     mv_command = f"mv {PREF_FILE} {new_name}"
     result = adb_command(mv_command, use_su=True)
@@ -111,10 +112,12 @@ def launch_app():
     print("⌛ Menunggu game loading dan masuk ke halaman awal...")
     time.sleep(5)
     # Langkah 1: Tap di posisi (300, 300) sampai guest.png muncul
-    print("🔄 Tap (1000, 1000) sampai muncul guest.png...")
+    #print("🔄 Tap (1000, 1000) sampai muncul guest.png...")
 
-
-    for _ in range(30):  # max 90 detik
+    #
+    # 1. TUNGGU guest.png
+    #
+    for _ in range(50):  # max 90 detik
         #print("🔄 Tunggu")
         pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\guest.png")
         if pos:
@@ -123,7 +126,7 @@ def launch_app():
             break
         #print("🔄 Tap Continue")
         adb_tap(300, 300)
-        time.sleep(3)
+        time.sleep(1) #def 3 ---------------------------------------------------------------------------------------
     else:
         print("❌ guest.png tidak ditemukan.")
         return
@@ -136,7 +139,7 @@ def launch_app():
             print("🔄 Tap Lokasi")
             adb_tap(*pos)
             break
-        time.sleep(2)
+        time.sleep(1) #def 2 ---------------------------------------------------------------------------------------
     else:
         print("❌ lokasi.png tidak ditemukan.")
         return
@@ -155,46 +158,37 @@ def launch_app():
         adb_tap(1000,25)
         print("🔄 manual tap lokasi.")
         return
-
-    # for _ in range(10):  # max 90 detik
-    #     #print("🔄 Tunggu")
-    #     pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\lokasi_indo.png")
-    #     if pos:
-    #         time.sleep(0.8)
-    #         print("🔄 Tap Indonesia")
-    #         adb_tap(*pos)
-    #         break
-    #     time.sleep(1.5)
-    # else:
-    #     print("❌ lokasi_indo.png tidak ditemukan.")
-    #     return
+    
+    #
+    # 2. Centang TOS
+    #
 
     for _ in range(10):  # max 90 detik
-        print("🔄 Tunggu")
+        #print("🔄 Tunggu")
         pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\centang.png")
         if pos:
             print("🔄 Tap TOS")
             adb_tap(*pos)
             break
-        time.sleep(2)
+        time.sleep(1) #def 2 ---------------------------------------------------------------------------------------
     else:
         print("❌ centang.png tidak ditemukan.")
         return
 
     for _ in range(30):  # max 90 detik
-        print("🔄 Tunggu")
+        #print("🔄 Tunggu")
         pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\confirm.png")
         if pos:
             print("🔄 Tap Confirm")
             adb_tap(*pos)
             break
-        time.sleep(2)
+        time.sleep(1) #def 2 ---------------------------------------------------------------------------------------
     else:
         print("❌ confirm.png tidak ditemukan.")
         return
 
     for _ in range(30):  # max 90 detik
-        print("🔄 Tunggu")
+        #print("🔄 Tunggu")
         pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\start.png")
         if pos:
             print("🔄 Tap Start")
@@ -208,10 +202,11 @@ def launch_app():
     #
     #
     for _ in range(20):  # max 40 detik
-        pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\recomended.png")
+        # pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\recomended.png")
+        pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\leona04.png")
         if pos:
             print("🖱️ Lanjut ke Pemilihan Server")
-            #adb_tap(*pos)
+            adb_tap(*pos)
             # lanjut ke langkah berikutnya
             break
         else:
@@ -220,43 +215,23 @@ def launch_app():
             if pos2:
                 #print("🖱️ Tap 'select_server.png'")
                 adb_tap(*pos2)
-            time.sleep(2)
-    #
-    #
-    #
+            time.sleep(1) #def 2 ---------------------------------------------------------------------------------------
+   
+
     # for _ in range(30):  # max 90 detik
-    #     print("🔄 Tunggu")
-    #     pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\select_server.png")
+    #     print("🔄 Pilih Server")
+    #     pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\leona04.png")
     #     if pos:
-    #         print("🔄 Tap Select Server")
-    #         for _ in range(10):  # max 90 detik
-    #             print("🔄 Tunggu Server")
-    #             pos2 = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\recomended.png")
-    #             if not pos2:
-    #                 adb_tap(*pos)
-    #                 break
+    #         print("🔄 Tap Leona04")
+    #         adb_tap(*pos)
     #         break
     #     time.sleep(2)
     # else:
-    #     print("❌ select_server.png tidak ditemukan.")
+    #     print("❌ leona03.png tidak ditemukan.")
     #     return
-    #
-    #
-    #
-    #
 
-    for _ in range(30):  # max 90 detik
-        print("🔄 Pilih Server")
-        pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\leona04.png")
-        if pos:
-            print("🔄 Tap Leona04")
-            adb_tap(*pos)
-            break
-        time.sleep(2)
-    else:
-        print("❌ leona03.png tidak ditemukan.")
-        return
 
+    #masuk ke Game
     for _ in range(30):  # max 90 detik
         print("🔄 Menunggu Enter Game")
         pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\enter_game.png")
@@ -269,20 +244,24 @@ def launch_app():
         print("❌ enter_game.png tidak ditemukan.")
         return
 
+    #
+    # 3. Pemilihan Karakter, klo 
+    #
+
     for _ in range(30):  # max 90 detik
-        print("🔄 Pilih Dark Elf")
+        print("🔄 Menunggu Menu Pemilihan Karakter")
         pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\dark_elf.png")
         if pos:
             print("🔄 Tap Dark Elf")
             adb_tap(*pos)
             break
-        time.sleep(2)
+        time.sleep(1) #def 2 ---------------------------------------------------------------------------------------
     else:
-        print("❌ dark_elf.png tidak ditemukan.")
+        print("❌ Menu Karakter tidak Muncul, kemungkinan server full.")
         subprocess.run(f'{ADB_PATH} shell am force-stop {PACKAGE_NAME}', shell=True)
         
         return
-
+    
     for _ in range(30):  # max 90 detik
         print("🔄 Pilih Dark Elf - Archer")
         pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\archer.png")
@@ -294,6 +273,11 @@ def launch_app():
     else:
         print("❌ archer.png tidak ditemukan.")
         return
+
+
+    #
+    # 4. Pembuatan Karakter
+    #
 
     for _ in range(30):  # max 90 detik
         print("🔄 Wait Select")
@@ -307,6 +291,9 @@ def launch_app():
         print("❌ select.png tidak ditemukan.")
         return
 
+    #
+    # 5. Pembuatan Nama
+    #
     
     for _ in range(30):  # max 90 detik
         pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\klik_nama.png")
@@ -315,7 +302,8 @@ def launch_app():
             time.sleep(2)
             adb_tap(*pos)
             time.sleep(2)
-            random_name = get_random_name("nama1.txt", "nama2.txt")
+            #random_name = get_random_name("nama1.txt", "nama2.txt")
+            random_name = get_random_name(nama1, nama2)
             if random_name:
                 print(f"✅ Nama acak yang dipilih: {random_name}")
                 subprocess.run(f'{ADB_PATH} shell input text "{random_name}"', shell=True)
@@ -339,6 +327,11 @@ def launch_app():
             break
         time.sleep(2)
 
+
+    #
+    # 5. Menunggu gambar leah yaitu setelah masuk ke game
+    #
+
     #############################################################################################################################################
     for _ in range(20):  # max 40 detik
         pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\leah.png")
@@ -349,10 +342,11 @@ def launch_app():
             break
         else:
             print("✅ SKIP VIDEO")
-            #subprocess.run(f'{ADB_PATH} shell input tap 1440 120', shell=True)
             adb_tap(1440,135)
             time.sleep(2)
     
+
+
     for _ in range(20):  # max 90 detik
         pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\accept.png")
         if pos:
