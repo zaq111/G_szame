@@ -58,7 +58,7 @@ def adb_screenshot():
 
 
 
-def find_template_on_screen(template_path, threshold=0.8):
+def find_template_on_screen(template_path, threshold=0.75):
     screen = adb_screenshot()
     screen_gray = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
     template = cv2.imread(template_path, 0)
@@ -125,10 +125,11 @@ def launch_app():
             adb_tap(*pos)
             break
         #print("🔄 Tap Continue")
-        adb_tap(300, 300)
+        #adb_tap(300, 300)
         time.sleep(1) #def 3 ---------------------------------------------------------------------------------------
     else:
         print("❌ guest.png tidak ditemukan.")
+        subprocess.run(f'{ADB_PATH} shell am force-stop {PACKAGE_NAME}', shell=True)
         return
 
     for _ in range(30):  # max 90 detik
@@ -203,7 +204,8 @@ def launch_app():
     #
     for _ in range(20):  # max 40 detik
         # pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\recomended.png")
-        pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\leona04.png")
+        print("🖱️ Pencarian Server Leona5")
+        pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\leona05.png")
         if pos:
             print("🖱️ Lanjut ke Pemilihan Server")
             adb_tap(*pos)
@@ -211,11 +213,12 @@ def launch_app():
             break
         else:
             #print("✅ Gambar talking isle Belum Muncul, SKIP")
+            print("🖱️ Sewrver belum ketemu, berarti klik select server")
             pos2 = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\select_server.png")
             if pos2:
                 #print("🖱️ Tap 'select_server.png'")
                 adb_tap(*pos2)
-            time.sleep(1) #def 2 ---------------------------------------------------------------------------------------
+            time.sleep(2) #def 2 ---------------------------------------------------------------------------------------
    
 
     # for _ in range(30):  # max 90 detik
@@ -243,6 +246,62 @@ def launch_app():
     else:
         print("❌ enter_game.png tidak ditemukan.")
         return
+
+
+    pos_captcha = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\please.png")
+    if pos_captcha:
+        print("🔒 Captcha terdeteksi. Mohon input manual.")
+    
+        # Fokus ke emulator agar user bisa langsung mengetik
+        adb_tap(*pos_captcha)  # klik area captcha untuk aktifkan input
+
+        # Minta input dari user
+        captcha_text = input("Ketik isi captcha (manual): ").strip()
+
+        # Kirim input via ADB (misalnya emulator langsung menerima input keyboard)
+        subprocess.run(f'{ADB_PATH} shell input text "{captcha_text}"', shell=True)
+        pos_confirm = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\capcha.png")
+        if pos_confirm:
+            adb_tap(*pos_confirm)
+        
+        print("✅ Captcha diinput. Melanjutkan...")
+    # while True:
+    #     print("✅ Mencari Captcha2 ")
+    #     pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\cancel_dicapcha.png")
+    #     print("✅ Captcha2 di cek")
+    #     if pos:
+    #         print("✅ Cancel Ketemu")
+    #         while True:
+    #             print("✅ Masuk While")
+    #             pos_captcha = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\please.png")
+    #             if not pos_captcha:
+    #                 print("✅ Captcha sudah hilang. Melanjutkan...")
+    #                 break  # Captcha selesai
+    #             else:
+    #                 print("🔒 Captcha terdeteksi. Mohon input manual.")
+
+    #                 adb_tap(*pos_captcha)  # Fokuskan input ke captcha
+
+    #                 captcha_text = input("Ketik isi captcha (manual): ").strip()
+    #                 subprocess.run(f'{ADB_PATH} shell input text "{captcha_text}"', shell=True)
+    #                 pos_confirm = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\capcha.png")
+    #                 if pos_confirm:
+    #                     adb_tap(*pos_confirm)
+    #                 time.sleep(2)
+
+    #                 # Coba klik confirm jika ada
+    #                 pos_confirm = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\confirm2.png")
+    #                 if pos_confirm:
+    #                     adb_tap(*pos_confirm)
+    #                     time.sleep(2)
+
+    #                 print("⏳ Menunggu captcha validasi...")
+    #         break
+    #     else:
+    #         time.sleep(2)
+    #         print("✅ Ulangi")
+
+
 
     #
     # 3. Pemilihan Karakter, klo 
@@ -333,17 +392,23 @@ def launch_app():
     #
 
     #############################################################################################################################################
-    for _ in range(20):  # max 40 detik
+    for _ in range(30):  # max 40 detik
         pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\leah.png")
         if pos:
             print("✅ Gambar 'leah.png' ditemukan, lanjut ke langkah berikutnya.")
-            time.sleep(1)
-            adb_tap(1250,115)
+            time.sleep(2)
+            adb_tap(1250,118)
             break
         else:
             print("✅ SKIP VIDEO")
             adb_tap(1440,135)
             time.sleep(2)
+        for _ in range(30):
+            pos_skip = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\skip.png")
+            if pos_skip:
+                print("🔄 Try Skip")
+                adb_tap(*pos_skip)
+                break
     
 
 
@@ -363,6 +428,10 @@ def launch_app():
             break
         time.sleep(2)
     
+    #
+    # 6. Proses Mail
+    #
+
     for _ in range(20):  # max 40 detik
         pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\mail.png")
         if pos:
@@ -381,6 +450,7 @@ def launch_app():
                 if pos_agi:
                     adb_tap(*pos_agi)
                     adb_tap(*pos_agi)
+                    time.sleep(2)
                     for _ in range(20):
                         pos_see_all =  find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\see_all.png")
                         if pos_see_all:
@@ -396,38 +466,35 @@ def launch_app():
                                 if jawaban in ['y', 'n']:
                                     break
                             break
-                    break
-            break
-            
-            for _ in range(20):
-                pos_hero = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\hero_class.png")
-                if pos_hero:
-                    adb_tap(*pos_hero)
-                    adb_tap(*pos_hero)
-                    for _ in range(20):
-                        pos_see_all =  find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\see_all.png")
-                        if pos_see_all:
-                            adb_tap(*pos_see_all)   
-                            break
-                        pos_skip_to_result =  find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\skip_to_result.png")
-                        if pos_skip_to_result:
-                            adb_tap(*pos_skip_to_result)
-                            while True:
-                                jawaban = input("Lanjutkan? (y/n): ").strip().lower()
-                                if jawaban in ['y', 'n']:
-                                    break
-                            break
-
-                    break
-            break
-
-            
+                        
+                    #break
+            #break
         else:
             print("🔄 Gambar belum ditemukan, tekan ~")
             #subprocess.run(f'{ADB_PATH} shell input text "~"', shell=True)
             adb_tap(1500,20)
 
             time.sleep(2)
+            
+    for _ in range(20):  # max 40 detik
+        pos_hero = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\hero_class.png")
+        if pos_hero:
+            adb_tap(*pos_hero)
+            adb_tap(*pos_hero)
+            time.sleep(2)
+            for _ in range(20):
+                pos_see_all =  find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\see_all.png")
+                if pos_see_all:
+                    adb_tap(*pos_see_all)   
+                    break
+                pos_skip_to_result =  find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\skip_to_result.png")
+                if pos_skip_to_result:
+                    adb_tap(*pos_skip_to_result)
+                    while True:
+                        jawaban = input("Lanjutkan? (y/n): ").strip().lower()
+                        if jawaban in ['y', 'n']:
+                            break
+                    break
 
     print("✅ Proses awal selesai. Siap lanjut ke fase berikutnya.")
 

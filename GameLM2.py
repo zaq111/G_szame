@@ -1,18 +1,62 @@
 ﻿import subprocess
+import random
+import time
+import pyautogui
 import numpy as np
 import cv2
-import time
+
+ADB_PATH = r"C:\ADB\platform-tools\adb.exe"
+DEVICE_ID = "emulator-5554"
+PACKAGE_NAME = "com.ncvgames.lineage2msa"
+PREF_FILE = f"/data/data/{PACKAGE_NAME}/shared_prefs/ncmop.preferences.xml"
+image_dir = r"C:\Users\Administrator\source\repos\zaq111\Game"
+nama1 = r"C:\Users\Administrator\source\repos\zaq111\Game\nama1.txt"
+nama2 = r"C:\Users\Administrator\source\repos\zaq111\Game\nama2.txt"
+#960 x 540
+def adb_command(command, use_su=False):
+    if use_su:
+        # Kutip tunggal luar, kutip ganda dalam
+        full_cmd = f'"{ADB_PATH}" -s {DEVICE_ID} shell su -c \'"{command}"\''
+    else:
+        full_cmd = f'"{ADB_PATH}" -s {DEVICE_ID} shell "{command}"'
+    try:
+        result = subprocess.check_output(full_cmd, shell=True, stderr=subprocess.STDOUT)
+        return result.decode().strip()
+    except subprocess.CalledProcessError:
+        return None
+
+def adb_tap(x, y):
+    """Kirim input tap ke emulator via ADB."""
+    subprocess.run(f'"{ADB_PATH}" -s {DEVICE_ID} shell input tap {x} {y}', shell=True)
+
+def is_app_running():
+    result = adb_command(f"pidof {PACKAGE_NAME}")
+    return bool(result)
+
+def preferences_file_exists():
+    result = adb_command(f'ls "{PREF_FILE}"', use_su=True)
+    return bool(result)
+
+def rename_preferences_file():
+    random_number = random.randint(100000, 999999)
+    new_name = f"/data/data/{PACKAGE_NAME}/shared_prefs/ncmop.preferences_{random_number}.xml"
+    mv_command = f"mv {PREF_FILE} {new_name}"
+    result = adb_command(mv_command, use_su=True)
+    if result is not None:
+        print(f"✅ File berhasil di-rename ke: {new_name}")
+    else:
+        print("❌ Gagal rename file (mungkin tidak ada atau permission ditolak).")
 
 def adb_screenshot():
     result = subprocess.run(
-        ["adb", "exec-out", "screencap", "-p"],
+        [f"{ADB_PATH}", "exec-out", "screencap", "-p"],
         stdout=subprocess.PIPE
     )
     img_array = np.frombuffer(result.stdout, np.uint8)
     screenshot = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
     return screenshot
-##
-def find_template_on_screen(template_path, threshold=0.8):
+
+def find_template_on_screen(template_path, threshold=0.75):
     screen = adb_screenshot()
     screen_gray = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
     template = cv2.imread(template_path, 0)
@@ -25,57 +69,145 @@ def find_template_on_screen(template_path, threshold=0.8):
         h, w = template.shape
         center_x = max_loc[0] + w // 2
         center_y = max_loc[1] + h // 2
-        print(f"✅ {template_path} ditemukan di ({center_x}, {center_y}) dengan confidence {max_val:.2f}")
+        #print(f"✅ {template_path} ditemukan di ({center_x}, {center_y}) dengan confidence {max_val:.2f}")
         return (center_x, center_y)
     return None
 
-def adb_tap(x, y):
-    subprocess.run(["adb", "shell", "input", "tap", str(x), str(y)])
+def get_random_name(file1, file2):
+    try:
+        with open(file1, 'r', encoding='utf-8') as f1, open(file2, 'r', encoding='utf-8') as f2:
+            list1 = [line.strip() for line in f1 if line.strip()]
+            list2 = [line.strip() for line in f2 if line.strip()]
+    except FileNotFoundError as e:
+        print(f"❌ File tidak ditemukan: {e}")
+        return None
 
-def wait_and_tap_image(image_path, delay=1, max_wait=15):
+    if not list1 or not list2:
+        print("❌ Salah satu file kosong.")
+        return None
+
+    return f"{random.choice(list1)}{random.choice(list2)}"
+
+def wait_and_tap_image(image_path, delay=1, max_wait=500):
+    print(f"🚀 {image_path}")
     for _ in range(max_wait):
         pos = find_template_on_screen(image_path)
         if pos:
+            time.sleep(2)
             adb_tap(*pos)
             return True
         time.sleep(delay)
     print(f"❌ {image_path} tidak ditemukan dalam {max_wait * delay} detik.")
     return False
 
+
 def launch_app():
-    print("🔄 Tap (300,300) setiap 3 detik sampai muncul guest.png...")
-    for _ in range(30):  # max 90 detik
-        pos = find_template_on_screen("guest.png")
-        if pos:
-            adb_tap(*pos)
-            break
-        adb_tap(300, 300)
-        time.sleep(3)
+    launch_cmd = f"monkey -p {PACKAGE_NAME} -c android.intent.category.LAUNCHER 1"
+    result = adb_command(launch_cmd)
+    if result is not None:
+        print("🚀 Aplikasi berhasil dijalankan.")
     else:
-        print("❌ guest.png tidak ditemukan.")
-        return
+        print("❌ Gagal menjalankan aplikasi.")
 
-    print("🧭 Menunggu lokasi.png...")
-    if not wait_and_tap_image("lokasi.png"):
-        return
+    print("⌛ Menunggu game loading dan masuk ke halaman awal...")
+    #
+    # 1. TUNGGU guest.png
+    #
+    adb_tap(300, 300)
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\awal_garis.png")
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_guest.png")
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_country.png")
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_indonesia.png")
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_centang.png")
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_confirm_biru.png")
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_start.png")
 
-    print("🗺️ Menunggu lokasi_indo.png...")
-    if not wait_and_tap_image("lokasi_indo.png"):
-        return
+    for _ in range(50):  # max 90 detik
+        #print("🔄 Tunggu")
+        pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_recomended.png")
+        if not pos:
+            wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_server.png")
+        else:
+            time.sleep(2)
+            wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_leona4.png")
+            break
 
-    time.sleep(3)
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_entergame.png")
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_capcha_code.png")
+    
+    for _ in range(50):
+        pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_darkelf.png")
+        if pos:
+            wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_darkelf.png")
+            time.sleep(1)
+            wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_archer.png")
+            time.sleep(1)
+            wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_select_karakter.png")
+            time.sleep(1)
+            break
+        else:
+            captcha_text = input("Ketik isi captcha (manual): ").strip()
+            time.sleep(1)
+            subprocess.run(f'{ADB_PATH} shell input text "{captcha_text}"', shell=True)
+            time.sleep(1)
+            wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_confirm_capcha.png")
 
-    print("✅ Menunggu centang.png...")
-    if not wait_and_tap_image("centang.png"):
-        return
+    for _ in range(30):  # max 90 detik
+        pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_tap_nama.png")
+        if pos:
+            print("🔄 Tap Select")
+            time.sleep(2)
+            adb_tap(*pos)
+            time.sleep(2)
+            #random_name = get_random_name("nama1.txt", "nama2.txt")
+            random_name = get_random_name(nama1, nama2)
+            if random_name:
+                print(f"✅ Nama acak yang dipilih: {random_name}")
+                subprocess.run(f'{ADB_PATH} shell input text "{random_name}"', shell=True)
+                time.sleep(2)
+                break
+            time.sleep(2)  
 
-    time.sleep(2)
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_create.png")
+    for _ in range(30):  # max 90 detik
+        pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_skip_leah.png")
+        if not pos:
+            wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_skip.png")
+        else:
+            wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_skip.png")
+            break
+            
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_talking_isle.png")
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_accept_isle.png")
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_tap3.png")
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_mail.png")
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_claim_mail.png")
+    wait_and_tap_image(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_bag.png")
 
-    print("🔒 Menunggu confirm.png...")
-    if not wait_and_tap_image("confirm.png"):
-        return
+    pos = find_template_on_screen(r"C:\Users\Administrator\source\repos\zaq111\Game\mini_pilih_agi.png")
+    if pos:
+        adb_tap(*pos)
+        adb_tap(*pos)
+            
+    
 
-    print("🎉 Launch berhasil!")
 
-# Panggil fungsi
-launch_app()
+if __name__ == "__main__":
+    print("🔁 Memulai loop pengecekan setiap 5 detik...\n")
+    while True:
+        if not is_app_running():
+            print("🛑 Aplikasi tidak berjalan.")
+            
+            if preferences_file_exists():
+                print("🗂️ File preferences ditemukan. Melakukan rename...")
+                rename_preferences_file()
+            else:
+                print("❌ File preferences tidak ditemukan. Lewati rename.")
+
+            print("🚀 Menjalankan aplikasi...")
+            launch_app()
+        else:
+            print("✅ Aplikasi sedang berjalan. Tidak melakukan apa-apa.")
+        
+        time.sleep(5)  # Delay 5 detik
+

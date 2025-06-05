@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>82709ca8-82f0-4988-a5f9-94354b06f636</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>GameLM.py</StartupFile>
+    <StartupFile>GameLM2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
