@@ -44,7 +44,7 @@ async function runDailyRoutine(bagian) {
         await tunggu(500);
 		kirimPerintah("Diaz Donate Guild", [255,221,10,0,47,173,9,230,229,29,0,0,62,13,1,0,0,0],500);
 		kirimPerintah("Gold Donate Guild", [255,221,10,0,47,173,9,230,229,29,0,0,62,13,2,0,0,0],100);
-        await tunggu(40000);
+        await tunggu(20000);
 		kirimPerintah("Enhance Gear", [255,221,7,0,87,17,135,83,71,0,0,0,52,1,0]);
 		kirimPerintah("Upgrade Skill", [255,221,8,0,245,242,128,19,5,1,0,0,2,4,7,0]);
 		kirimPerintah("Train Avatar", [255,221,6,0,124,222,183,88,89,2,0,0,57,32]);
@@ -108,7 +108,7 @@ async function runDailyRoutine(bagian) {
 
     // JIKA MEMILIH BAGIAN 3 (atau jalankan semua)
     if (bagian === 3 || bagian === undefined) {
-        logBagian(3, "Territory & Social");
+        logBagian(3, "Stealth Tower");
         kirimPerintah("Buy Dark Spirit Ethereal Realm", [255,221,6,0,184,175,234,159,229,1,0,0,68,35], 50);
         await tunggu(3000); 
 
@@ -133,18 +133,99 @@ async function runDailyRoutine(bagian) {
     }
 
     // JIKA MEMILIH BAGIAN 4 (atau jalankan semua)
+    // JIKA MEMILIH BAGIAN 4 (atau jalankan semua)
     if (bagian === 4 || bagian === undefined) {
-        logBagian(4, "Dark Spirit Realm");
-        kirimPerintah("Buy Dark Spirit Ethereal Realm", [255,221,6,0,184,175,234,159,229,1,0,0,68,35], 50);
-        await tunggu(3000); 
+        logBagian(4, "Quest");
 
-        for (let i = 1; i <= 5; i++) {
-            kirimPerintah(`Claim Dark Spirit Ethereal Realm ${i}`, [255,221,7,0,19,57,164,237,228,8,0,0,68,36,i]);
-            await tunggu(400);
-        }
-        await tunggu(1500);
+        // Pembungkus utama agar semua alur berjalan berurutan dari atas ke bawah
+        await (async function eksekusiQuestMaksimal() {
+            // Pindahkan helper tunggu ke paling atas agar bisa dipakai di mana saja
+            const tunggu = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+            // ==========================================
+            // TAHAP 1: LOCH TEMPLE ROUTINE
+            // ==========================================
+            console.log("[Bot] Memulai urutan perintah Loch Temple...");
+
+            kirimPerintah("Beli Loch Temple Attempt", [255,221,6,0,5,91,202,158,19,4,0,0,53,200], 6);
+            await tunggu(1000); // Jeda sebentar setelah beli
+
+            kirimPerintah("Loch Temple M11 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,19,0]);
+            await tunggu(80000);
+            kirimPerintah("Loch Temple M11 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,18,0]);
+            await tunggu(80000);
+            kirimPerintah("Loch Temple M10 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,17,0]);
+            await tunggu(80000);
+            kirimPerintah("Loch Temple M10 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,16,0]);
+            await tunggu(80000);
+            kirimPerintah("Loch Temple M9 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,15,0]);
+            await tunggu(80000);
+
+            kirimPerintah("Loch Temple M9 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,14,0]);
+            await tunggu(80000);
+
+            kirimPerintah("Loch Temple M8 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,13,0]);
+            await tunggu(80000);
+
+            kirimPerintah("Loch Temple M8 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,12,0]);
+            await tunggu(80000);
+
+            kirimPerintah("Loch Temple M7 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,11,0]);
+            await tunggu(80000);
+
+            kirimPerintah("Loch Temple M7 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,10,0]);
+            console.log("[Bot] Semua urutan perintah Loch Temple selesai! Bersiap transisi...");
+            
+            // Jeda transisi setelah Loch Temple selesai sebelum masuk Combat Area
+            await tunggu(5500);
+
+            // ==========================================
+            // TAHAP 2: SIKLUS COMBAT MASSAL (3X)
+            // ==========================================
+            console.log("[Bot] 🚀 Memulai Otomasi Combat: Total 3 Siklus Berturut-turut...");
+
+            for (let siklus = 1; siklus <= 3; siklus++) {
+                console.log(`%c[Bot] ─── MEMULAI SIKLUS KE-${siklus} ───`, 'color: #00ffff; font-weight: bold;');
+
+                // 1. Ke Combat Area
+                kirimPerintah("Ke Combat Area", [255,221,10,0,43,225,48,55,224,31,0,0,0,30,0,0,0,0]);
+                console.log(`[Bot - S${siklus}] Perintah 'Ke Combat Area' dikirim. Menunggu memuat 20 detik...`);
+                await tunggu(20000);
+
+                // 2. Kill & ATK Monster ke-1
+                kirimPerintah("Kill Monster ke-1 Legendary Combat Area", [255,221,7,0,96,114,80,178,253,31,0,0,79,4,9]);
+                kirimPerintah("ATK Monster ke-1 Legendary Combat Area", [255,221,7,0,169,11,44,108,227,32,0,0,79,9,9]);
+                console.log(`[Bot - S${siklus}] Perintah Kill & ATK dikirim. Menunggu pertarungan 45 detik...`);
+                await tunggu(45000);
+
+                // 3. Proses Claim Reward 1 sampai 12
+                console.log(`[Bot - S${siklus}] Memulai Claim Reward 1-12 dengan jeda 0.3 detik...`);
+                for (let i = 1; i <= 12; i++) {
+                    const labelClaim = `Claim-${i} Legendary Combat Area (Siklus ${siklus})`;
+                    const bytesClaim = [255, 221, 7, 0, 13, 55, 240, 159, 75, 34, 0, 0, 79, 6, i];
+                    
+                    kirimPerintah(labelClaim, bytesClaim);
+                    await tunggu(300);
+                }
+                
+                console.log(`[Bot - S${siklus}] Semua reward selesai diklaim. Jeda akhir siklus 5 detik...`);
+                await tunggu(5000);
+                
+                console.log(`%c[Bot] ✅ Siklus ke-${siklus} Selesai!`, 'color: #00ff88;');
+            }
+
+            console.log("%c[Bot] 🎉 LUAR BIASA! Seluruh 3 siklus otomatis telah selesai dijalankan!", 'color: #ffcc00; font-weight: bold;');
+            await tunggu(6000);
+
+            // ==========================================
+            // TAHAP 3: AKHIR INSTANCE
+            // ==========================================
+            kirimPerintah("Keluar dari Instance", [255,221,6,0,221,149,149,69,63,4,0,0,53,43]);
+            console.log("[Bot] Perintah 'Keluar dari Instance' berhasil dikirim.");
+            await tunggu(2000);
+
+        })(); // Akhir dari fungsi eksekusi otomatis
     }
-
     // JIKA MEMILIH BAGIAN 5 (atau jalankan semua)
     if (bagian === 5 || bagian === undefined) {
         logBagian(5, "VIP & Guild Donations");
