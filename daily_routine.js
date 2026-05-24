@@ -177,7 +177,7 @@ async function runDailyRoutine(bagian) {
             console.log("[Bot] Semua urutan perintah Loch Temple selesai! Bersiap transisi...");
             
             // Jeda transisi setelah Loch Temple selesai sebelum masuk Combat Area
-            await tunggu(5500);
+            await tunggu(35500);
 
             // ==========================================
             // TAHAP 2: SIKLUS COMBAT MASSAL (3X)
@@ -228,12 +228,29 @@ async function runDailyRoutine(bagian) {
     }
     // JIKA MEMILIH BAGIAN 5 (atau jalankan semua)
     if (bagian === 5 || bagian === undefined) {
-        logBagian(5, "VIP & Guild Donations");
-        kirimPerintah("Claim VIP13 Reward", [255,221,6,0,155,88,193,131,59,2,0,0,19,7]);
-        await tunggu(2000);
-        kirimPerintah("Diaz Donate Guild", [255,221,10,0,47,173,9,230,229,29,0,0,62,13,1,0,0,0], 500);
-        await tunggu(2000);
-        kirimPerintah("Gold Donate Guild", [255,221,10,0,47,173,9,230,229,29,0,0,62,13,2,0,0,0], 100);
+        logBagian(5, "Claim Badge & Season");
+        console.log("[Bot] Memulai klaim Warrior Badge Biasa (1-14)...");
+        for (let i = 1; i <= 14; i++) {
+            const labelNormal = `Claim Warrior Badge #${i}`;
+            const bytesNormal = [255, 221, 11, 0, 226, 239, 151, 241, 64, 20, 0, 0, 27, 94, 1, i, 0, 0, 0];
+            
+            kirimPerintah(labelNormal, bytesNormal);
+            await tunggu(400); // Jeda antar klaim
+        }
+
+        await tunggu(1500); // Jeda sebelum lanjut ke kategori berikutnya
+
+        // ============================================================
+        // 2. LOOP CLAIM SEASON WARRIOR BADGE (1-32)
+        // ============================================================
+        console.log("[Bot] Memulai klaim Season Warrior Badge (1-32)...");
+        for (let j = 1; j <= 32; j++) {
+            const labelSeason = `Claim Season Warrior Badge #${j}`;
+            const bytesSeason = [255, 221, 11, 0, 45, 164, 103, 87, 143, 21, 0, 0, 27, 94, 2, j, 0, 0, 0];
+            
+            kirimPerintah(labelSeason, bytesSeason);
+            await tunggu(400); // Jeda antar klaim
+        }
     }
 
     // JIKA MEMILIH BAGIAN 6 (atau jalankan semua)
