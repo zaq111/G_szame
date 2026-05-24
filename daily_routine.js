@@ -220,22 +220,27 @@ async function runDailyRoutine(bagian) {
             // ==========================================
             // TAHAP 3: AKHIR INSTANCE
             // ==========================================
-            kirimPerintah("Keluar dari Instance", [255,221,6,0,221,149,149,69,63,4,0,0,53,43]);
+            kirimPerintah("Keluar ke World", [255,221,6,0,99,124,203,108,165,18,0,0,53,43])
             console.log("[Bot] Perintah 'Keluar dari Instance' berhasil dikirim.");
             await tunggu(2000);
 
         })(); // Akhir dari fungsi eksekusi otomatis
+		
     }
     // JIKA MEMILIH BAGIAN 5 (atau jalankan semua)
     if (bagian === 5 || bagian === undefined) {
-        logBagian(5, "Claim Badge & Season");
+        logBagian(5, "Claim Badge & Train Crypt");
+        
+        // ============================================================
+        // 1. LOOP CLAIM WARRIOR BADGE BIASA (1-14)
+        // ============================================================
         console.log("[Bot] Memulai klaim Warrior Badge Biasa (1-14)...");
         for (let i = 1; i <= 14; i++) {
             const labelNormal = `Claim Warrior Badge #${i}`;
             const bytesNormal = [255, 221, 11, 0, 226, 239, 151, 241, 64, 20, 0, 0, 27, 94, 1, i, 0, 0, 0];
             
             kirimPerintah(labelNormal, bytesNormal);
-            await tunggu(400); // Jeda antar klaim
+            await tunggu(200); // Menggunakan delay 200ms pilihan Anda
         }
 
         await tunggu(1500); // Jeda sebelum lanjut ke kategori berikutnya
@@ -249,20 +254,63 @@ async function runDailyRoutine(bagian) {
             const bytesSeason = [255, 221, 11, 0, 45, 164, 103, 87, 143, 21, 0, 0, 27, 94, 2, j, 0, 0, 0];
             
             kirimPerintah(labelSeason, bytesSeason);
-            await tunggu(400); // Jeda antar klaim
+            await tunggu(200); // Menggunakan delay 200ms pilihan Anda
         }
+
+        await tunggu(1500); // Jeda sebelum masuk ke Train Crypt
+
+        // ============================================================
+        // 3. TRAIN CRYPT ID (MUNDUR 50 SAMPAI 1) - Variabel diganti ke 'k'
+        // ============================================================
+		kirimPerintah("Crypt ID Auto", [255,221,7,0,130,25,33,252,20,7,0,0,9,3,7],20)
+		await tunggu(50000);
+		kirimPerintah("Draw Crypt ID", [255,221,7,0,173,60,13,251,1,21,0,0,90,3,3],5)
+		await tunggu(3000);
+        console.log("[Bot] Memulai Train Crypt ID dari 50 mundur sampai 1...");
+        for (let k = 50; k >= 1; k--) {
+            const labelCrypt = `Train Crypt ID #${k}`;
+            const bytesCrypt = [255, 221, 10, 0, 254, 37, 130, 39, 75, 18, 0, 0, 90, 4, k, 161, 7, 0];
+            
+            kirimPerintah(labelCrypt, bytesCrypt);
+            await tunggu(200); // Menggunakan delay 200ms pilihan Anda
+        }
+        
+		// ============================================================
+        // 3.1 IMPRINT CRYPT ID (MUNDUR 52 SAMPAI 41) - Variabel diganti ke 'l'
+        // ============================================================
+		for (let l = 52; l >= 41; l--) {
+        const labelAvatar = `IMPRINT Crypt ID #${l}`;
+        const bytesAvatar = [255, 221, 10, 0, 247, 84, 229, 4, 163, 23, 0, 0, 90, 15, i, 161, 7, 0];
+        
+        // Eksekusi perintah dengan parameter pengulangan 10x
+        kirimPerintah(labelAvatar, bytesAvatar, 10);
+        
+        // Jeda 0.5 detik memberi napas bagi pengulangan internal 10x tersebut
+        await tunggu(100); 
+    }
+		
+		
+		
+        console.log("[Bot] ✅ Seluruh rangkaian Bagian 5 Selesai!");
     }
 
     // JIKA MEMILIH BAGIAN 6 (atau jalankan semua)
     if (bagian === 6 || bagian === undefined) {
-        logBagian(6, "Character Training & AFK");
+        logBagian(6, "Boss Dark & Dungeon");
+		// ============================================================
+        // 1. CROSS - DARK TEMPLE
+        // ============================================================
+        kirimPerintah("Beli Dark Temple Attempt", [255,221,15,0,207,64,118,191,133,13,0,0,3,6,135,243,5,0,1,0,0,0,1],5)
+        await tunggu(1000); // Menunggu jeda setelah donasi selesai diproses internal
+		kirimPerintah("Masuk Dark Temple T15", [255,221,7,0,16,110,69,39,48,2,0,0,85,72,43])
+        await tunggu(350000); // Menunggu jeda setelah donasi selesai diproses internal
+		kirimPerintah("Keluar ke World", [255,221,6,0,99,124,203,108,165,18,0,0,53,43])
         await tunggu(5000); // Menunggu jeda setelah donasi selesai diproses internal
-        kirimPerintah("Enhance Gear", [255,221,7,0,87,17,135,83,71,0,0,0,52,1,0]);
-        kirimPerintah("Upgrade Skill", [255,221,8,0,245,242,128,19,5,1,0,0,2,4,7,0]);
-        kirimPerintah("Train Avatar", [255,221,6,0,124,222,183,88,89,2,0,0,57,32]);
-        kirimPerintah("Train Mercenary", [255,221,6,0,216,240,70,155,178,13,0,0,57,12]);
-        kirimPerintah("AFK Raid", [255,221,7,0,126,24,103,6,167,7,0,0,53,7,2]);
-        await tunggu(3000);
+		
+        // ============================================================
+        // 1. CROSS - DARK TEMPLE
+        // ============================================================
+		
         kirimPerintah("Inv Guild Team Challenge", [255,221,6,0,69,113,27,184,5,16,0,0,67,26]);
         kirimPerintah("Start Guild Team Challenge", [255,221,6,0,252,31,178,53,71,16,0,0,67,13]);
     }
