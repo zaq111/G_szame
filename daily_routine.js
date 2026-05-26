@@ -150,33 +150,33 @@ async function runDailyRoutine(bagian) {
             await tunggu(1000); // Jeda sebentar setelah beli
 
             kirimPerintah("Loch Temple M11 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,19,0]);
-            await tunggu(70000);
+            await tunggu(50000);
             kirimPerintah("Loch Temple M11 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,18,0]);
-            await tunggu(70000);
+            await tunggu(50000);
             kirimPerintah("Loch Temple M10 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,17,0]);
-            await tunggu(70000);
+            await tunggu(50000);
             kirimPerintah("Loch Temple M10 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,16,0]);
-            await tunggu(70000);
+            await tunggu(50000);
             kirimPerintah("Loch Temple M9 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,15,0]);
-            await tunggu(70000);
+            await tunggu(50000);
 
             kirimPerintah("Loch Temple M9 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,14,0]);
-            await tunggu(70000);
+            await tunggu(50000);
 
             kirimPerintah("Loch Temple M8 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,13,0]);
-            await tunggu(70000);
+            await tunggu(50000);
 
             kirimPerintah("Loch Temple M8 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,12,0]);
-            await tunggu(70000);
+            await tunggu(50000);
 
             kirimPerintah("Loch Temple M7 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,11,0]);
-            await tunggu(70000);
+            await tunggu(50000);
 
             kirimPerintah("Loch Temple M7 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,10,0]);
             console.log("[Bot] Semua urutan perintah Loch Temple selesai! Bersiap transisi...");
             
             // Jeda transisi setelah Loch Temple selesai sebelum masuk Combat Area
-            await tunggu(35500);
+            await tunggu(25500);
 
             // ==========================================
             // TAHAP 2: SIKLUS COMBAT MASSAL (3X)
