@@ -145,38 +145,31 @@ async function runDailyRoutine(bagian) {
             // TAHAP 1: LOCH TEMPLE ROUTINE
             // ==========================================
             console.log("[Bot] Memulai urutan perintah Loch Temple...");
-
             kirimPerintah("Beli Loch Temple Attempt", [255,221,6,0,5,91,202,158,19,4,0,0,53,200], 6);
             await tunggu(1000); // Jeda sebentar setelah beli
-
             kirimPerintah("Loch Temple M11 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,19,0]);
-            await tunggu(50000);
+            await tunggu(40000);
             kirimPerintah("Loch Temple M11 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,18,0]);
-            await tunggu(50000);
+            await tunggu(40000);
             kirimPerintah("Loch Temple M10 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,17,0]);
-            await tunggu(50000);
+            await tunggu(40000);
             kirimPerintah("Loch Temple M10 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,16,0]);
-            await tunggu(50000);
+            await tunggu(40000);
             kirimPerintah("Loch Temple M9 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,15,0]);
-            await tunggu(50000);
-
+            await tunggu(40000);
             kirimPerintah("Loch Temple M9 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,14,0]);
-            await tunggu(50000);
-
+            await tunggu(40000);
             kirimPerintah("Loch Temple M8 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,13,0]);
-            await tunggu(50000);
-
+            await tunggu(40000);
             kirimPerintah("Loch Temple M8 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,12,0]);
-            await tunggu(50000);
-
+            await tunggu(40000);
             kirimPerintah("Loch Temple M7 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,11,0]);
-            await tunggu(50000);
-
+            await tunggu(40000);
             kirimPerintah("Loch Temple M7 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,10,0]);
             console.log("[Bot] Semua urutan perintah Loch Temple selesai! Bersiap transisi...");
             
             // Jeda transisi setelah Loch Temple selesai sebelum masuk Combat Area
-            await tunggu(25500);
+            await tunggu(35500);
 
             // ==========================================
             // TAHAP 2: SIKLUS COMBAT MASSAL (3X)
@@ -204,7 +197,7 @@ async function runDailyRoutine(bagian) {
                     const bytesClaim = [255, 221, 7, 0, 13, 55, 240, 159, 75, 34, 0, 0, 79, 6, i];
                     
                     kirimPerintah(labelClaim, bytesClaim);
-                    await tunggu(300);
+                    await tunggu(100);
                 }
                 
                 console.log(`[Bot - S${siklus}] Semua reward selesai diklaim. Jeda akhir siklus 5 detik...`);
