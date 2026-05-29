@@ -23,6 +23,9 @@ async function runDailyRoutine(bagian) {
     // JIKA MEMILIH BAGIAN 2 (atau jalankan semua)
     if (bagian === 2 || bagian === undefined) {
         logBagian(2, "Abyss Operations");
+		kirimPerintah("$1 Deal -1", [255,221,8,0,127,104,141,27,237,18,0,0,27,2,1,0]);
+		kirimPerintah("$1 Deal -2", [255,221,8,0,191,147,198,133,254,18,0,0,27,2,2,0]);
+		kirimPerintah("$1 Deal -3", [255,221,8,0,127,104,141,27,237,18,0,0,27,2,3,0]);
         kirimPerintah("Abyss - Reset Confirm", [255,221,6,0,143,71,126,108,186,27,0,0,53,32]);
 		kirimPerintah("Abyss - Quick Raid", [255,221,10,0,169,182,45,131,120,8,0,0,0,32,44,0,0,0]);
         kirimPerintah("Abyss - Quick Raid Confirm", [255,221,6,0,236,101,82,170,141,8,0,0,53,33]);
@@ -37,20 +40,14 @@ async function runDailyRoutine(bagian) {
 		kirimPerintah("Claim Dark Spirit Ethereal Realm 5", [255,221,7,0,19,57,164,237,228,8,0,0,68,36,5]);
 		kirimPerintah("Claim VIP13 Reward", [255,221,6,0,155,88,193,131,59,2,0,0,19,7]);
         await tunggu(500);
-		kirimPerintah("Diaz Donate Guild", [255,221,10,0,47,173,9,230,229,29,0,0,62,13,1,0,0,0],500);
-		kirimPerintah("Gold Donate Guild", [255,221,10,0,47,173,9,230,229,29,0,0,62,13,2,0,0,0],100);
 		console.log("tunggu 25 detik");
-        await tunggu(25000);
 		kirimPerintah("Enhance Gear", [255,221,7,0,87,17,135,83,71,0,0,0,52,1,0]);
 		kirimPerintah("Upgrade Skill", [255,221,8,0,245,242,128,19,5,1,0,0,2,4,7,0]);
 		kirimPerintah("Train Avatar", [255,221,6,0,124,222,183,88,89,2,0,0,57,32]);
 		kirimPerintah("Train Mercenary", [255,221,6,0,216,240,70,155,178,13,0,0,57,12]);
 		kirimPerintah("AFK Raid", [255,221,7,0,126,24,103,6,167,7,0,0,53,7,2]);
-		await tunggu(2500);
-		kirimPerintah("Inv Guild Team Challenge", [255,221,6,0,69,113,27,184,5,16,0,0,67,26]);
-		kirimPerintah("Start Guild Team Challenge", [255,221,6,0,252,31,178,53,71,16,0,0,67,13]);
+		await tunggu(4500);
 		console.log("tunggu 8 detik");
-		await tunggu(8000);
 		kirimPerintah("Open Rune Essence", [255,221,15,0,164,42,62,163,238,28,0,0,3,6,11,226,4,0,1,0,0,0,1],100);
 		kirimPerintah("Open Rune Essence", [255,221,15,0,127,90,139,27,173,29,0,0,3,6,10,226,4,0,1,0,0,0,1],100);
 		kirimPerintah("Open Rune Essence", [255,221,15,0,127,90,139,27,173,30,0,0,3,6,12,226,4,0,1,0,0,0,1],100);
@@ -60,7 +57,7 @@ async function runDailyRoutine(bagian) {
 		kirimPerintah("Open Box Premium Circle", [255,221,15,0,169,229,236,104,228,31,0,0,3,6,65,187,4,0,1,0,0,0,1],20)
 		kirimPerintah("Up Dark Spirit", [255,221,6,0,79,239,158,140,127,12,0,0,68,31],2000)
 		console.log("tunggu 10 detik");
-		await tunggu(10000);
+		await tunggu(1000);
 		kirimPerintah("Buy Sprite Organite 1", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,1,0,1,0,0,0]);
 		kirimPerintah("Buy Sprite Organite 2", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,2,0,1,0,0,0]);
 		kirimPerintah("Buy Sprite Organite 3", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,3,0,1,0,0,0]);
@@ -96,13 +93,17 @@ async function runDailyRoutine(bagian) {
 		kirimPerintah("Claim Login Gift", [255,221,7,0,99,61,207,116,19,20,0,0,36,41,4]);
 		kirimPerintah("Claim Login Gift", [255,221,7,0,99,61,207,116,19,20,0,0,36,41,5]);
 		kirimPerintah("Claim Login Gift", [255,221,7,0,99,61,207,116,19,20,0,0,36,41,6]);
-		await tunggu(1000);
 		kirimPerintah("Gear Hunt", [255,221,9,0,193,72,160,192,210,20,0,0,6,2,1,1,0],2);
 		kirimPerintah("Soul Gear Hunt", [255,221,9,0,51,40,176,139,204,21,0,0,6,2,2,1,0],2);
 		kirimPerintah("Rune Hunt", [255,221,9,0,193,72,160,192,210,20,0,0,6,2,3,1,0],2);
 		kirimPerintah("Peak Hunt", [255,221,9,0,193,72,160,192,210,20,0,0,6,2,4,1,0],2);
 		kirimPerintah("Deity Hunt", [255,221,9,0,193,72,160,192,210,20,0,0,6,2,5,1,0],2);
 		kirimPerintah("Spirit Gear Hunt", [255,221,9,0,193,72,160,192,210,20,0,0,6,2,6,1,0],2);
+		kirimPerintah("Inv Guild Team Challenge", [255,221,6,0,69,113,27,184,5,16,0,0,67,26]);
+		kirimPerintah("Start Guild Team Challenge", [255,221,6,0,252,31,178,53,71,16,0,0,67,13]);
+		await tunggu(8000);
+		kirimPerintah("Diaz Donate Guild", [255,221,10,0,47,173,9,230,229,29,0,0,62,13,1,0,0,0],500);
+		kirimPerintah("Gold Donate Guild", [255,221,10,0,47,173,9,230,229,29,0,0,62,13,2,0,0,0],100);
     }
 
     // JIKA MEMILIH BAGIAN 3 (atau jalankan semua)
@@ -319,6 +320,27 @@ async function runDailyRoutine(bagian) {
         kirimPerintah("Open Box Territory War", [255,221,15,0,101,4,124,151,85,31,0,0,3,6,239,89,5,0,1,0,0,0,1], 20);
         kirimPerintah("Open Box Premium Circle", [255,221,15,0,169,229,236,104,228,31,0,0,3,6,65,187,4,0,1,0,0,0,1], 20);
         
+		kirimPerintah("Complete Daily Trial 1", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,1]);
+		kirimPerintah("Complete Daily Trial 2", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,2]);
+		kirimPerintah("Complete Daily Trial 3", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,3]);
+		kirimPerintah("Complete Daily Trial 4", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,4]);
+		kirimPerintah("Complete Daily Trial 5", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,5]);
+		kirimPerintah("Complete Daily Trial 6", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,6]);
+		kirimPerintah("Complete Daily Trial 7", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,7]);
+		kirimPerintah("Complete Daily Trial 8", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,8]);
+		kirimPerintah("Complete Daily Trial 9", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,9]);
+		kirimPerintah("Complete Daily Trial 10", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,10]);
+		kirimPerintah("Complete Daily Trial 11", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,11]);
+		kirimPerintah("Complete Daily Trial 12", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,12]);
+		kirimPerintah("Complete Daily Trial 13", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,13]);
+		kirimPerintah("Complete Daily Trial 13", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,14]);
+		kirimPerintah("Complete Daily Trial 13", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,15]);
+		kirimPerintah("Complete Daily Trial 13", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,16]);
+		kirimPerintah("Complete Daily Trial 13", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,17]);
+		kirimPerintah("Complete Daily Trial 13", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,18]);
+		kirimPerintah("Complete Daily Trial 13", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,19]);
+		kirimPerintah("Complete Daily Trial 13", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,20]);
+
         kirimPerintah("Up Dark Spirit", [255,221,6,0,79,239,158,140,127,12,0,0,68,31], 2000);
         await tunggu(20000);
     }
