@@ -17,7 +17,11 @@ async function runDailyRoutine(bagian) {
         kirimPerintah("Challenge - Dungeon Daily", [255,221,7,0,103,58,38,138,32,8,0,0,53,68,1]);
         await tunggu(100);
         kirimPerintah("Raid - Dungeon Daily", [255,221,7,0,248,229,216,19,54,8,0,0,53,68,2]);
-        await tunggu(100);
+        await tunggu(500);
+		console.log("SELESAI Daily 1-------------------------------------------------------------");
+		console.log("SELESAI Daily 1-------------------------------------------------------------");
+		console.log("SELESAI Daily 1-------------------------------------------------------------");
+		console.log("SELESAI Daily 1-------------------------------------------------------------");
     }
 
     // JIKA MEMILIH BAGIAN 2 (atau jalankan semua)
@@ -32,21 +36,24 @@ async function runDailyRoutine(bagian) {
 		kirimPerintah("Claim Gift Teritory", [255,221,6,0,70,187,104,162,197,0,0,0,11,6]);
 		kirimPerintah("Chat Cross Server", [255,221,15,0,57,165,90,172,37,12,0,0,59,1,10,0,0,0,0,1,0,97,0]);
 		kirimPerintah("Buy Dark Spirit Ethereal Realm", [255,221,6,0,184,175,234,159,229,1,0,0,68,35],50)
-        await tunggu(100);
+        await tunggu(1000);
 		kirimPerintah("Claim Dark Spirit Ethereal Realm 1", [255,221,7,0,19,57,164,237,228,8,0,0,68,36,1]);
 		kirimPerintah("Claim Dark Spirit Ethereal Realm 2", [255,221,7,0,19,57,164,237,228,8,0,0,68,36,2]);
 		kirimPerintah("Claim Dark Spirit Ethereal Realm 3", [255,221,7,0,19,57,164,237,228,8,0,0,68,36,3]);
 		kirimPerintah("Claim Dark Spirit Ethereal Realm 4", [255,221,7,0,19,57,164,237,228,8,0,0,68,36,4]);
 		kirimPerintah("Claim Dark Spirit Ethereal Realm 5", [255,221,7,0,19,57,164,237,228,8,0,0,68,36,5]);
 		kirimPerintah("Claim VIP13 Reward", [255,221,6,0,155,88,193,131,59,2,0,0,19,7]);
-        await tunggu(500);
+        await tunggu(1500);
 		console.log("tunggu 25 detik");
 		kirimPerintah("Enhance Gear", [255,221,7,0,87,17,135,83,71,0,0,0,52,1,0]);
 		kirimPerintah("Upgrade Skill", [255,221,8,0,245,242,128,19,5,1,0,0,2,4,7,0]);
 		kirimPerintah("Train Avatar", [255,221,6,0,124,222,183,88,89,2,0,0,57,32]);
 		kirimPerintah("Train Mercenary", [255,221,6,0,216,240,70,155,178,13,0,0,57,12]);
 		kirimPerintah("AFK Raid", [255,221,7,0,126,24,103,6,167,7,0,0,53,7,2]);
-		await tunggu(4500);
+		await tunggu(700);
+		console.log("tunggu 8 detik");
+		console.log("tunggu 8 detik");
+		console.log("tunggu 8 detik");
 		console.log("tunggu 8 detik");
 		kirimPerintah("Open Rune Essence", [255,221,15,0,164,42,62,163,238,28,0,0,3,6,11,226,4,0,1,0,0,0,1],100);
 		kirimPerintah("Open Rune Essence", [255,221,15,0,127,90,139,27,173,29,0,0,3,6,10,226,4,0,1,0,0,0,1],100);
@@ -57,7 +64,7 @@ async function runDailyRoutine(bagian) {
 		kirimPerintah("Open Box Premium Circle", [255,221,15,0,169,229,236,104,228,31,0,0,3,6,65,187,4,0,1,0,0,0,1],20)
 		kirimPerintah("Up Dark Spirit", [255,221,6,0,79,239,158,140,127,12,0,0,68,31],2000)
 		console.log("tunggu 10 detik");
-		await tunggu(1000);
+		await tunggu(5000);
 		kirimPerintah("Buy Sprite Organite 1", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,1,0,1,0,0,0]);
 		kirimPerintah("Buy Sprite Organite 2", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,2,0,1,0,0,0]);
 		kirimPerintah("Buy Sprite Organite 3", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,3,0,1,0,0,0]);
@@ -73,7 +80,7 @@ async function runDailyRoutine(bagian) {
 		kirimPerintah("Buy Sprite Organite 13", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,13,0,1,0,0,0]);
 		kirimPerintah("Buy Sprite Organite 14", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,14,0,1,0,0,0]);
 		kirimPerintah("Buy Sprite Organite 15", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,15,0,1,0,0,0]);
-		await tunggu(1000);
+		await tunggu(3000);
 		kirimPerintah("Claim Benefit Hall 2min", [255,221,8,0,194,215,83,64,89,12,0,0,36,31,1,0]);
 		kirimPerintah("Claim Benefit Hall 5min", [255,221,8,0,59,220,189,231,124,12,0,0,36,31,2,0]);
 		kirimPerintah("Claim Benefit Hall 10min", [255,221,8,0,59,220,189,231,124,12,0,0,36,31,3,0]);
@@ -86,7 +93,7 @@ async function runDailyRoutine(bagian) {
 		kirimPerintah("Claim Benefit Hall 120min", [255,221,8,0,59,220,189,231,124,12,0,0,36,31,10,0]);
 		kirimPerintah("Claim Benefit Hall 150min", [255,221,8,0,59,220,189,231,124,12,0,0,36,31,11,0]);
 		kirimPerintah("Claim Benefit Hall 180min", [255,221,8,0,59,220,189,231,124,12,0,0,36,31,12,0]);
-		await tunggu(1000);
+		await tunggu(3000);
 		kirimPerintah("Claim Login Gift", [255,221,7,0,99,61,207,116,19,20,0,0,36,41,1]);
 		kirimPerintah("Claim Login Gift", [255,221,7,0,99,61,207,116,19,20,0,0,36,41,2]);
 		kirimPerintah("Claim Login Gift", [255,221,7,0,99,61,207,116,19,20,0,0,36,41,3]);
@@ -101,9 +108,16 @@ async function runDailyRoutine(bagian) {
 		kirimPerintah("Spirit Gear Hunt", [255,221,9,0,193,72,160,192,210,20,0,0,6,2,6,1,0],2);
 		kirimPerintah("Inv Guild Team Challenge", [255,221,6,0,69,113,27,184,5,16,0,0,67,26]);
 		kirimPerintah("Start Guild Team Challenge", [255,221,6,0,252,31,178,53,71,16,0,0,67,13]);
-		await tunggu(8000);
+		console.log("Guild Challeng");
+		await tunggu(10000);
 		kirimPerintah("Diaz Donate Guild", [255,221,10,0,47,173,9,230,229,29,0,0,62,13,1,0,0,0],500);
 		kirimPerintah("Gold Donate Guild", [255,221,10,0,47,173,9,230,229,29,0,0,62,13,2,0,0,0],100);
+		await tunggu(10000);
+		console.log("SELESAI Daily 2-------------------------------------------------------------");
+		console.log("SELESAI Daily 2-------------------------------------------------------------");
+		console.log("SELESAI Daily 2-------------------------------------------------------------");
+		console.log("SELESAI Daily 2-------------------------------------------------------------");
+		
     }
 
     // JIKA MEMILIH BAGIAN 3 (atau jalankan semua)
@@ -114,7 +128,7 @@ async function runDailyRoutine(bagian) {
 
         for (let i = 1; i <= 5; i++) {
             kirimPerintah(`Claim Dark Spirit Ethereal Realm ${i}`, [255,221,7,0,19,57,164,237,228,8,0,0,68,36,i]);
-            await tunggu(400);
+            await tunggu(300);
         }
         await tunggu(1500);
 		console.log("[Bot - Bagian 3] Memulai perulangan Stealth Tower (5x)...");
