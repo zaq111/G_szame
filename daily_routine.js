@@ -64,7 +64,7 @@ async function runDailyRoutine(bagian) {
 		kirimPerintah("Open Box Premium Circle", [255,221,15,0,169,229,236,104,228,31,0,0,3,6,65,187,4,0,1,0,0,0,1],20)
 		kirimPerintah("Up Dark Spirit", [255,221,6,0,79,239,158,140,127,12,0,0,68,31],2000)
 		console.log("tunggu 10 detik");
-		await tunggu(5000);
+		await tunggu(8000);
 		kirimPerintah("Buy Sprite Organite 1", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,1,0,1,0,0,0]);
 		kirimPerintah("Buy Sprite Organite 2", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,2,0,1,0,0,0]);
 		kirimPerintah("Buy Sprite Organite 3", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,3,0,1,0,0,0]);
@@ -106,13 +106,15 @@ async function runDailyRoutine(bagian) {
 		kirimPerintah("Peak Hunt", [255,221,9,0,193,72,160,192,210,20,0,0,6,2,4,1,0],2);
 		kirimPerintah("Deity Hunt", [255,221,9,0,193,72,160,192,210,20,0,0,6,2,5,1,0],2);
 		kirimPerintah("Spirit Gear Hunt", [255,221,9,0,193,72,160,192,210,20,0,0,6,2,6,1,0],2);
+		await tunggu(5000);
 		kirimPerintah("Inv Guild Team Challenge", [255,221,6,0,69,113,27,184,5,16,0,0,67,26]);
+		await tunggu(2000);
 		kirimPerintah("Start Guild Team Challenge", [255,221,6,0,252,31,178,53,71,16,0,0,67,13]);
 		console.log("Guild Challeng");
 		await tunggu(10000);
 		kirimPerintah("Diaz Donate Guild", [255,221,10,0,47,173,9,230,229,29,0,0,62,13,1,0,0,0],500);
 		kirimPerintah("Gold Donate Guild", [255,221,10,0,47,173,9,230,229,29,0,0,62,13,2,0,0,0],100);
-		await tunggu(10000);
+		await tunggu(30000);
 		console.log("SELESAI Daily 2-------------------------------------------------------------");
 		console.log("SELESAI Daily 2-------------------------------------------------------------");
 		console.log("SELESAI Daily 2-------------------------------------------------------------");
@@ -123,6 +125,10 @@ async function runDailyRoutine(bagian) {
     // JIKA MEMILIH BAGIAN 3 (atau jalankan semua)
     if (bagian === 3 || bagian === undefined) {
         logBagian(3, "Stealth Tower");
+		console.log("MULAI Daily 3-------------------------------------------------------------");
+		console.log("MULAI Daily 3-------------------------------------------------------------");
+		console.log("MULAI Daily 3-------------------------------------------------------------");
+		console.log("MULAI Daily 3-------------------------------------------------------------");
         kirimPerintah("Buy Dark Spirit Ethereal Realm", [255,221,6,0,184,175,234,159,229,1,0,0,68,35], 50);
         await tunggu(3000); 
 
@@ -144,18 +150,28 @@ async function runDailyRoutine(bagian) {
             kirimPerintah(`Claim Stealth Tower [P${siklus}]`, [255,221,6,0,121,60,39,103,168,3,0,0,53,165]);
             await tunggu(200); // delay 1 detik
         }
+		console.log("SELESAI Daily 3-------------------------------------------------------------");
+		console.log("SELESAI Daily 3-------------------------------------------------------------");
+		console.log("SELESAI Daily 3-------------------------------------------------------------");
+		console.log("SELESAI Daily 3-------------------------------------------------------------");
     }
 
     // JIKA MEMILIH BAGIAN 4 (atau jalankan semua)
     // JIKA MEMILIH BAGIAN 4 (atau jalankan semua)
     if (bagian === 4 || bagian === undefined) {
         logBagian(4, "Quest");
-
+		console.log("MULAI Daily 4-------------------------------------------------------------");
+		console.log("MULAI Daily 4-------------------------------------------------------------");
+		console.log("MULAI Daily 4-------------------------------------------------------------");
+		console.log("MULAI Daily 4-------------------------------------------------------------");
         // Pembungkus utama agar semua alur berjalan berurutan dari atas ke bawah
         await (async function eksekusiQuestMaksimal() {
             // Pindahkan helper tunggu ke paling atas agar bisa dipakai di mana saja
             const tunggu = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
+			console.log("MULAI Daily 4-----------LOCH TEMPLE--------------------------------------------------");
+			console.log("MULAI Daily 4-----------LOCH TEMPLE--------------------------------------------------");
+			console.log("MULAI Daily 4-----------LOCH TEMPLE--------------------------------------------------");
+			console.log("MULAI Daily 4-----------LOCH TEMPLE--------------------------------------------------");
             // ==========================================
             // TAHAP 1: LOCH TEMPLE ROUTINE
             // ==========================================
@@ -182,15 +198,21 @@ async function runDailyRoutine(bagian) {
             await tunggu(40000);
             kirimPerintah("Loch Temple M7 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,10,0]);
             console.log("[Bot] Semua urutan perintah Loch Temple selesai! Bersiap transisi...");
-            
+            console.log("SELESAI Daily 4-----------LOCH TEMPLE--------------------------------------------------");
+			console.log("SELESAI Daily 4-----------LOCH TEMPLE--------------------------------------------------");
+			console.log("SELESAI Daily 4-----------LOCH TEMPLE--------------------------------------------------");
+			console.log("SELESAI Daily 4-----------LOCH TEMPLE--------------------------------------------------");
             // Jeda transisi setelah Loch Temple selesai sebelum masuk Combat Area
-            await tunggu(35500);
+            await tunggu(45500);
 
             // ==========================================
             // TAHAP 2: SIKLUS COMBAT MASSAL (3X)
             // ==========================================
             console.log("[Bot] 🚀 Memulai Otomasi Combat: Total 3 Siklus Berturut-turut...");
-
+			console.log("MULAI Daily 4-----------MONSTER SIEGE--------------------------------------------------");
+			console.log("MULAI Daily 4-----------MONSTER SIEGE--------------------------------------------------");
+			console.log("MULAI Daily 4-----------MONSTER SIEGE--------------------------------------------------");
+			console.log("MULAI Daily 4-----------MONSTER SIEGE--------------------------------------------------");
             for (let siklus = 1; siklus <= 3; siklus++) {
                 console.log(`%c[Bot] ─── MEMULAI SIKLUS KE-${siklus} ───`, 'color: #00ffff; font-weight: bold;');
 
@@ -220,9 +242,13 @@ async function runDailyRoutine(bagian) {
                 
                 console.log(`%c[Bot] ✅ Siklus ke-${siklus} Selesai!`, 'color: #00ff88;');
             }
-
+			console.log("SELESAI Daily 4-----------MONSTER SIEGE--------------------------------------------------");
+			console.log("SELESAI Daily 4-----------MONSTER SIEGE--------------------------------------------------");
+			console.log("SELESAI Daily 4-----------MONSTER SIEGE--------------------------------------------------");
+			console.log("SELESAI Daily 4-----------MONSTER SIEGE--------------------------------------------------");
+			
             console.log("%c[Bot] 🎉 LUAR BIASA! Seluruh 3 siklus otomatis telah selesai dijalankan!", 'color: #ffcc00; font-weight: bold;');
-            await tunggu(6000);
+            await tunggu(16000);
 
             // ==========================================
             // TAHAP 3: AKHIR INSTANCE
@@ -230,6 +256,10 @@ async function runDailyRoutine(bagian) {
             kirimPerintah("Keluar ke World", [255,221,6,0,99,124,203,108,165,18,0,0,53,43])
             console.log("[Bot] Perintah 'Keluar dari Instance' berhasil dikirim.");
             await tunggu(2000);
+			console.log("SELESAI Daily 4-------------------------------------------------------------");
+			console.log("SELESAI Daily 4-------------------------------------------------------------");
+			console.log("SELESAI Daily 4-------------------------------------------------------------");
+			console.log("SELESAI Daily 4-------------------------------------------------------------");
 
         })(); // Akhir dari fungsi eksekusi otomatis
 		
