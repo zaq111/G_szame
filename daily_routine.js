@@ -36,21 +36,21 @@ async function runDailyRoutine(bagian) {
 		kirimPerintah("Claim Gift Teritory", [255,221,6,0,70,187,104,162,197,0,0,0,11,6]);
 		kirimPerintah("Chat Cross Server", [255,221,15,0,57,165,90,172,37,12,0,0,59,1,10,0,0,0,0,1,0,97,0]);
 		kirimPerintah("Buy Dark Spirit Ethereal Realm", [255,221,6,0,184,175,234,159,229,1,0,0,68,35],50)
-        await tunggu(1000);
+        await tunggu(5000);
 		kirimPerintah("Claim Dark Spirit Ethereal Realm 1", [255,221,7,0,19,57,164,237,228,8,0,0,68,36,1]);
 		kirimPerintah("Claim Dark Spirit Ethereal Realm 2", [255,221,7,0,19,57,164,237,228,8,0,0,68,36,2]);
 		kirimPerintah("Claim Dark Spirit Ethereal Realm 3", [255,221,7,0,19,57,164,237,228,8,0,0,68,36,3]);
 		kirimPerintah("Claim Dark Spirit Ethereal Realm 4", [255,221,7,0,19,57,164,237,228,8,0,0,68,36,4]);
 		kirimPerintah("Claim Dark Spirit Ethereal Realm 5", [255,221,7,0,19,57,164,237,228,8,0,0,68,36,5]);
 		kirimPerintah("Claim VIP13 Reward", [255,221,6,0,155,88,193,131,59,2,0,0,19,7]);
-        await tunggu(1500);
+        await tunggu(3500);
 		console.log("tunggu 25 detik");
 		kirimPerintah("Enhance Gear", [255,221,7,0,87,17,135,83,71,0,0,0,52,1,0]);
 		kirimPerintah("Upgrade Skill", [255,221,8,0,245,242,128,19,5,1,0,0,2,4,7,0]);
 		kirimPerintah("Train Avatar", [255,221,6,0,124,222,183,88,89,2,0,0,57,32]);
 		kirimPerintah("Train Mercenary", [255,221,6,0,216,240,70,155,178,13,0,0,57,12]);
 		kirimPerintah("AFK Raid", [255,221,7,0,126,24,103,6,167,7,0,0,53,7,2]);
-		await tunggu(700);
+		await tunggu(4000);
 		console.log("tunggu 8 detik");
 		console.log("tunggu 8 detik");
 		console.log("tunggu 8 detik");
@@ -58,13 +58,13 @@ async function runDailyRoutine(bagian) {
 		kirimPerintah("Open Rune Essence", [255,221,15,0,164,42,62,163,238,28,0,0,3,6,11,226,4,0,1,0,0,0,1],100);
 		kirimPerintah("Open Rune Essence", [255,221,15,0,127,90,139,27,173,29,0,0,3,6,10,226,4,0,1,0,0,0,1],100);
 		kirimPerintah("Open Rune Essence", [255,221,15,0,127,90,139,27,173,30,0,0,3,6,12,226,4,0,1,0,0,0,1],100);
-		await tunggu(1000);
+		await tunggu(2000);
 		kirimPerintah("Open Box", [255,221,15,0,67,141,71,195,145,30,0,0,3,6,57,196,9,0,1,0,0,0,1],20)
 		kirimPerintah("Open Box Territory War", [255,221,15,0,101,4,124,151,85,31,0,0,3,6,239,89,5,0,1,0,0,0,1],20)
 		kirimPerintah("Open Box Premium Circle", [255,221,15,0,169,229,236,104,228,31,0,0,3,6,65,187,4,0,1,0,0,0,1],20)
 		kirimPerintah("Up Dark Spirit", [255,221,6,0,79,239,158,140,127,12,0,0,68,31],2000)
 		console.log("tunggu 10 detik");
-		await tunggu(8000);
+		await tunggu(15000);
 		kirimPerintah("Buy Sprite Organite 1", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,1,0,1,0,0,0]);
 		kirimPerintah("Buy Sprite Organite 2", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,2,0,1,0,0,0]);
 		kirimPerintah("Buy Sprite Organite 3", [255,221,13,0,100,151,204,7,86,1,0,0,61,28,1,3,0,1,0,0,0]);
@@ -106,11 +106,11 @@ async function runDailyRoutine(bagian) {
 		kirimPerintah("Peak Hunt", [255,221,9,0,193,72,160,192,210,20,0,0,6,2,4,1,0],2);
 		kirimPerintah("Deity Hunt", [255,221,9,0,193,72,160,192,210,20,0,0,6,2,5,1,0],2);
 		kirimPerintah("Spirit Gear Hunt", [255,221,9,0,193,72,160,192,210,20,0,0,6,2,6,1,0],2);
-		await tunggu(5000);
+		await tunggu(10000);
 		kirimPerintah("Inv Guild Team Challenge", [255,221,6,0,69,113,27,184,5,16,0,0,67,26]);
 		await tunggu(2000);
 		kirimPerintah("Start Guild Team Challenge", [255,221,6,0,252,31,178,53,71,16,0,0,67,13]);
-		console.log("Guild Challeng");
+		console.log("DAILY ----- Guild Challeng");
 		await tunggu(10000);
 		kirimPerintah("Diaz Donate Guild", [255,221,10,0,47,173,9,230,229,29,0,0,62,13,1,0,0,0],500);
 		kirimPerintah("Gold Donate Guild", [255,221,10,0,47,173,9,230,229,29,0,0,62,13,2,0,0,0],100);
@@ -176,26 +176,37 @@ async function runDailyRoutine(bagian) {
             // TAHAP 1: LOCH TEMPLE ROUTINE
             // ==========================================
             console.log("[Bot] Memulai urutan perintah Loch Temple...");
+			console.log("MULAI Daily 4-----------LOCH TEMPLE Beli--------------------------------------------------");
             kirimPerintah("Beli Loch Temple Attempt", [255,221,6,0,5,91,202,158,19,4,0,0,53,200], 6);
-            await tunggu(1000); // Jeda sebentar setelah beli
-            kirimPerintah("Loch Temple M11 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,19,0]);
-            await tunggu(40000);
+            await tunggu(3000); // Jeda sebentar setelah beli
+            console.log("MULAI Daily 4-----------LOCH TEMPLE 11-4--------------------------------------------------");
+			kirimPerintah("Loch Temple M11 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,19,0]);
+            await tunggu(45000);
+			console.log("MULAI Daily 4-----------LOCH TEMPLE 11-2--------------------------------------------------");
             kirimPerintah("Loch Temple M11 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,18,0]);
-            await tunggu(40000);
+            await tunggu(45000);
+			console.log("MULAI Daily 4-----------LOCH TEMPLE 10-4--------------------------------------------------");
             kirimPerintah("Loch Temple M10 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,17,0]);
-            await tunggu(40000);
+            await tunggu(45000);
+			console.log("MULAI Daily 4-----------LOCH TEMPLE 10-2--------------------------------------------------");
             kirimPerintah("Loch Temple M10 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,16,0]);
-            await tunggu(40000);
+            await tunggu(45000);
+			console.log("MULAI Daily 4-----------LOCH TEMPLE 9-4--------------------------------------------------");
             kirimPerintah("Loch Temple M9 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,15,0]);
-            await tunggu(40000);
+            await tunggu(45000);
+			console.log("MULAI Daily 4-----------LOCH TEMPLE 9-2--------------------------------------------------");
             kirimPerintah("Loch Temple M9 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,14,0]);
-            await tunggu(40000);
+            await tunggu(45000);
+			console.log("MULAI Daily 4-----------LOCH TEMPLE 8-4--------------------------------------------------");
             kirimPerintah("Loch Temple M8 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,13,0]);
-            await tunggu(40000);
+            await tunggu(45000);
+			console.log("MULAI Daily 4-----------LOCH TEMPLE 8-2--------------------------------------------------");
             kirimPerintah("Loch Temple M8 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,12,0]);
-            await tunggu(40000);
+            await tunggu(45000);
+			console.log("MULAI Daily 4-----------LOCH TEMPLE 7-4--------------------------------------------------");
             kirimPerintah("Loch Temple M7 R4", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,11,0]);
-            await tunggu(40000);
+            await tunggu(45000);
+			console.log("MULAI Daily 4-----------LOCH TEMPLE 7-2--------------------------------------------------");
             kirimPerintah("Loch Temple M7 R2", [255,221,8,0,126,56,17,215,189,0,0,0,53,194,10,0]);
             console.log("[Bot] Semua urutan perintah Loch Temple selesai! Bersiap transisi...");
             console.log("SELESAI Daily 4-----------LOCH TEMPLE--------------------------------------------------");
@@ -203,7 +214,7 @@ async function runDailyRoutine(bagian) {
 			console.log("SELESAI Daily 4-----------LOCH TEMPLE--------------------------------------------------");
 			console.log("SELESAI Daily 4-----------LOCH TEMPLE--------------------------------------------------");
             // Jeda transisi setelah Loch Temple selesai sebelum masuk Combat Area
-            await tunggu(45500);
+            await tunggu(55500);
 
             // ==========================================
             // TAHAP 2: SIKLUS COMBAT MASSAL (3X)
@@ -217,15 +228,17 @@ async function runDailyRoutine(bagian) {
                 console.log(`%c[Bot] ─── MEMULAI SIKLUS KE-${siklus} ───`, 'color: #00ffff; font-weight: bold;');
 
                 // 1. Ke Combat Area
+				console.log("MULAI Daily 4-----------MONSTER SIEGE-------Masuk Combat Arena-------------------------");
                 kirimPerintah("Ke Combat Area", [255,221,10,0,43,225,48,55,224,31,0,0,0,30,0,0,0,0]);
                 console.log(`[Bot - S${siklus}] Perintah 'Ke Combat Area' dikirim. Menunggu memuat 20 detik...`);
                 await tunggu(20000);
 
                 // 2. Kill & ATK Monster ke-1
+				console.log("MULAI Daily 4-----------MONSTER SIEGE-------Kill Monster ${siklus}-------------------------");
                 kirimPerintah("Kill Monster ke-1 Legendary Combat Area", [255,221,7,0,96,114,80,178,253,31,0,0,79,4,9]);
                 kirimPerintah("ATK Monster ke-1 Legendary Combat Area", [255,221,7,0,169,11,44,108,227,32,0,0,79,9,9]);
                 console.log(`[Bot - S${siklus}] Perintah Kill & ATK dikirim. Menunggu pertarungan 45 detik...`);
-                await tunggu(45000);
+                await tunggu(48000);
 
                 // 3. Proses Claim Reward 1 sampai 12
                 console.log(`[Bot - S${siklus}] Memulai Claim Reward 1-12 dengan jeda 0.3 detik...`);
@@ -238,7 +251,7 @@ async function runDailyRoutine(bagian) {
                 }
                 
                 console.log(`[Bot - S${siklus}] Semua reward selesai diklaim. Jeda akhir siklus 5 detik...`);
-                await tunggu(5000);
+                await tunggu(9000);
                 
                 console.log(`%c[Bot] ✅ Siklus ke-${siklus} Selesai!`, 'color: #00ff88;');
             }
@@ -253,9 +266,9 @@ async function runDailyRoutine(bagian) {
             // ==========================================
             // TAHAP 3: AKHIR INSTANCE
             // ==========================================
-            kirimPerintah("Keluar ke World", [255,221,6,0,99,124,203,108,165,18,0,0,53,43])
+            #kirimPerintah("Keluar ke World", [255,221,6,0,99,124,203,108,165,18,0,0,53,43])
             console.log("[Bot] Perintah 'Keluar dari Instance' berhasil dikirim.");
-            await tunggu(2000);
+            await tunggu(5000);
 			console.log("SELESAI Daily 4-------------------------------------------------------------");
 			console.log("SELESAI Daily 4-------------------------------------------------------------");
 			console.log("SELESAI Daily 4-------------------------------------------------------------");
@@ -267,7 +280,10 @@ async function runDailyRoutine(bagian) {
     // JIKA MEMILIH BAGIAN 5 (atau jalankan semua)
     if (bagian === 5 || bagian === undefined) {
         logBagian(5, "Claim Badge & Train Crypt");
-        
+        console.log("MULAI Daily 5-----------WARIOR BADGE CLAIM----------------------------------------");
+		console.log("MULAI Daily 5-----------WARIOR BADGE CLAIM----------------------------------------");
+		console.log("MULAI Daily 5-----------WARIOR BADGE CLAIM----------------------------------------");
+		console.log("MULAI Daily 5-----------WARIOR BADGE CLAIM----------------------------------------");
         // ============================================================
         // 1. LOOP CLAIM WARRIOR BADGE BIASA (1-14)
         // ============================================================
@@ -281,7 +297,10 @@ async function runDailyRoutine(bagian) {
         }
 
         await tunggu(1500); // Jeda sebelum lanjut ke kategori berikutnya
-
+		console.log("MULAI Daily 5-----------WARIOR BADGE CLAIM SEASON----------------------------------------");
+		console.log("MULAI Daily 5-----------WARIOR BADGE CLAIM SEASON----------------------------------------");
+		console.log("MULAI Daily 5-----------WARIOR BADGE CLAIM SEASON----------------------------------------");
+		console.log("MULAI Daily 5-----------WARIOR BADGE CLAIM SEASON----------------------------------------");
         // ============================================================
         // 2. LOOP CLAIM SEASON WARRIOR BADGE (1-32)
         // ============================================================
@@ -293,9 +312,9 @@ async function runDailyRoutine(bagian) {
             kirimPerintah(labelSeason, bytesSeason);
             await tunggu(200); // Menggunakan delay 200ms pilihan Anda
         }
-
+		console.log("MULAI Daily 5-----------WARIOR BADGE CLAIM SEASON-------------SELESAI --> CRYPT ID------------");
         await tunggu(1500); // Jeda sebelum masuk ke Train Crypt
-
+		console.log("MULAI Daily 5-----------CRYPT ID----------------------------------------");
         // ============================================================
         // 3. TRAIN CRYPT ID (MUNDUR 50 SAMPAI 1) - Variabel diganti ke 'k'
         // ============================================================
@@ -311,7 +330,7 @@ async function runDailyRoutine(bagian) {
             kirimPerintah(labelCrypt, bytesCrypt);
             await tunggu(200); // Menggunakan delay 200ms pilihan Anda
         }
-        
+        console.log("MULAI Daily 5-----------IMPRINNT ID----------------------------------------");
 		// ============================================================
         // 3.1 IMPRINT CRYPT ID (MUNDUR 52 SAMPAI 41) - Variabel diganti ke 'l'
         // ============================================================
@@ -323,7 +342,7 @@ async function runDailyRoutine(bagian) {
         kirimPerintah(labelAvatar, bytesAvatar, 10);
         
         // Jeda 0.5 detik memberi napas bagi pengulangan internal 10x tersebut
-        await tunggu(100); 
+        await tunggu(200); 
     }
 		
 		
@@ -348,22 +367,21 @@ async function runDailyRoutine(bagian) {
         // 1. CROSS - DARK TEMPLE
         // ============================================================
 		
-        kirimPerintah("Inv Guild Team Challenge", [255,221,6,0,69,113,27,184,5,16,0,0,67,26]);
-        kirimPerintah("Start Guild Team Challenge", [255,221,6,0,252,31,178,53,71,16,0,0,67,13]);
     }
 
     // JIKA MEMILIH BAGIAN 7 (atau jalankan semua)
     if (bagian === 7 || bagian === undefined) {
         logBagian(7, "Open Chests & Up Dark Spirit");
         await tunggu(5000);
+		console.log("MULAI Daily 7-----------OPEN RUNE CHEST----------------------------------------");
         kirimPerintah("Open Rune Essence", [255,221,15,0,164,42,62,163,238,28,0,0,3,6,11,226,4,0,1,0,0,0,1], 100);
         kirimPerintah("Open Rune Essence", [255,221,15,0,127,90,139,27,173,29,0,0,3,6,10,226,4,0,1,0,0,0,1], 100);
         kirimPerintah("Open Rune Essence", [255,221,15,0,127,90,139,27,173,30,0,0,3,6,12,226,4,0,1,0,0,0,1], 100);
-        
+        console.log("MULAI Daily 7-----------OPEN BOX----------------------------------------");
         kirimPerintah("Open Box", [255,221,15,0,67,141,71,195,145,30,0,0,3,6,57,196,9,0,1,0,0,0,1], 20);
         kirimPerintah("Open Box Territory War", [255,221,15,0,101,4,124,151,85,31,0,0,3,6,239,89,5,0,1,0,0,0,1], 20);
         kirimPerintah("Open Box Premium Circle", [255,221,15,0,169,229,236,104,228,31,0,0,3,6,65,187,4,0,1,0,0,0,1], 20);
-        
+        console.log("MULAI Daily 7-----------COMPLETE DAILY TRIAL----------------------------------------");
 		kirimPerintah("Complete Daily Trial 1", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,1]);
 		kirimPerintah("Complete Daily Trial 2", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,2]);
 		kirimPerintah("Complete Daily Trial 3", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,3]);
@@ -384,9 +402,13 @@ async function runDailyRoutine(bagian) {
 		kirimPerintah("Complete Daily Trial 13", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,18]);
 		kirimPerintah("Complete Daily Trial 13", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,19]);
 		kirimPerintah("Complete Daily Trial 13", [255,221,7,0,62,104,133,171,132,9,0,0,58,51,20]);
-
+		console.log("MULAI Daily 7-----------UP DARK SPIRIT----------------------------------------");
         kirimPerintah("Up Dark Spirit", [255,221,6,0,79,239,158,140,127,12,0,0,68,31], 2000);
-        await tunggu(20000);
+        await tunggu(10000);
+		console.log("MULAI Daily 7-----------SELESAI----------------------------------------");
+		console.log("MULAI Daily 7-----------SELESAI----------------------------------------");
+		console.log("MULAI Daily 7-----------SELESAI----------------------------------------");
+		console.log("MULAI Daily 7-----------SELESAI----------------------------------------");
     }
 
     // JIKA INGIN MENAMBAH BAGIAN 8 BESOK, TINGGAL PASTE DI BAWAH SINI:
